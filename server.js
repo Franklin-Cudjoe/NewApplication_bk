@@ -59,13 +59,13 @@ app.post("/contact", (req, res) => {
 });
 
 // Endpoint to view all messages
-app.get("/api/messages", (req, res) => {
+app.get("/messages", (req, res) => {
   const messages = JSON.parse(fs.readFileSync(messagesFile, "utf8"));
   res.json(messages);
 });
 
 // Endpoint to mark message as read
-app.patch("/api/messages/:index/read", (req, res) => {
+app.patch("/messages/:index/read", (req, res) => {
   const messages = JSON.parse(fs.readFileSync(messagesFile, "utf8"));
   const idx = parseInt(req.params.index, 10);
   if (isNaN(idx) || idx < 0 || idx >= messages.length) {
