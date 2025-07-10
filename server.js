@@ -22,14 +22,14 @@ if (!fs.existsSync(messagesFile)) {
 }
 
 // Set up multer to save files in the images folder
-const imagesDir = path.join(__dirname, "..", "public", "images");
+const imagesDir = path.join(__dirname, "images");
 if (!fs.existsSync(imagesDir)) {
   fs.mkdirSync(imagesDir);
 }
 
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
-    cb(null, path.join(__dirname, "..", "public", "images")); // Points to public/images
+    cb(null, path.join(__dirname, "images")); // Points images
   },
   filename: function (req, file, cb) {
     cb(null, Date.now() + "-" + file.originalname);
